@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[#020B1F] min-h-screen flex items-center justify-center">
         <form 
-            
+            @submit.prevent="register(userName,password)"
             class="flex flex-col bg-[#020B1F] text-white w-full max-w-[540px] p-10 border border-gray-700 rounded-lg shadow-[24px_24px_96px_0px_#0C132C]"
         >
             <img 
@@ -48,11 +48,22 @@
     </div>
 </template>
 <script setup>
-import {ref} from 'vue';
+import {ref,onBeforeMount} from 'vue';
 import { EyeIcon,EyeSlashIcon} from '@heroicons/vue/24/solid';
+import { useRouter, useRoute } from 'vue-router'
+onBeforeMount(()=>{
+    localStorage.clear();
+})
 
 const showPassword = ref(true);
 const userName = ref('');
 const password = ref('');
+const router = useRouter()
+const route = useRoute()
 
+function register(name,password){
+    localStorage.setItem("name",name);
+    localStorage.setItem("password",password);
+    router.push("/");
+}
 </script>
