@@ -1,6 +1,7 @@
 <template>
     <div class="bg-[#020B1F] min-h-screen flex items-center justify-center">
         <form 
+            
             class="flex flex-col bg-[#020B1F] text-white w-full max-w-[540px] p-10 border border-gray-700 rounded-lg shadow-[24px_24px_96px_0px_#0C132C]"
         >
             <img 
@@ -12,6 +13,7 @@
             <hr class="border-gray-600 mb-6">
             <label class="text-md font-medium mb-2">نام کاربری</label>
             <input 
+                v-model="userName"
                 type="text" 
                 placeholder="نام کاربری خود را وارد کنید" 
                 class="bg-[#1A2338] text-sm border border-gray-600 rounded-md p-3 mb-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -19,9 +21,10 @@
             <label class="text-md font-medium mb-2">رمز عبور</label>
             <div class="relative">
                 <input 
-                    class="bg-[#1A2338] border border-gray-600 rounded-md p-3  w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    v-model="password"
                     :type="showPassword ? 'text' : 'password'" 
                     placeholder="رمز عبور خود را وارد کنید"
+                    class="bg-[#1A2338] border border-gray-600 rounded-md p-3  w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                 <button
                     type="button"
@@ -36,6 +39,7 @@
             </div>
             <button 
                 type="submit" 
+                :disabled="userName==='' || password==='' "
                 class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition-colors mt-6"
             >
                 ورود به سپهر
@@ -48,4 +52,7 @@ import {ref} from 'vue';
 import { EyeIcon,EyeSlashIcon} from '@heroicons/vue/24/solid';
 
 const showPassword = ref(true);
+const userName = ref('');
+const password = ref('');
+
 </script>
