@@ -1,16 +1,27 @@
 <template>
     <div class="bg-[#020B1F] h-full">
         <Layout>
-            <div class="flex justify-center">
+            <div class="flex flex-col justify-center flex-wrap content-center">
+                <div class="flex justify-end mx-4 my-2">
+                    <button 
+                        type="button"
+                        class="h-8 px-4 flex min-w-min items-center m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-700 hover:bg-blue-900 cursor-pointer rounded-lg focus:shadow-outline"
+                    >
+                        <UserPlusIcon class="size-5" />
+                        افزودن کاربر
+                    </button>
+                </div>
                 <Table :header="header" :datas="users" />
             </div>
         </Layout>              
     </div>
 </template>
 <script setup>
+import {reactive } from "vue";
+
 import Layout from "@/components/Layout.vue";
 import Table from "@/components/Table.vue";
-
+import {UserPlusIcon} from "@heroicons/vue/24/outline";
 const header =[
     "نام کاربری",
     "سن",
@@ -19,7 +30,7 @@ const header =[
     "شرکت",
     "ایمیل"
 ]
-const users = [
+const users = reactive([
     {
         name: 'مهرزاد',
         age: 22,
@@ -108,6 +119,6 @@ const users = [
         company: 'زنجان سیستم',
         email: 'reza@zanjansystem.ir'
     }
-];
+]);
 
 </script>

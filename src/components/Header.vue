@@ -7,6 +7,7 @@
         />
         <div class="leftSide">
             <input
+                v-if="$router.path='users'"
                 type="text"
                 placeholder="جستجو..."
                 class="rounded-md text-white pr-4 w-[400px]"
