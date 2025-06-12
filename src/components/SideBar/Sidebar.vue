@@ -1,5 +1,5 @@
 <template>
-    <div class="text-white  h-screen w-64  top-0 right-0 flex flex-col">
+    <div class="text-white  h-screen w-64 flex  top-0 right-0  flex-col">
         <nav class="flex flex-col gap-4 p-4">
             <SidebarItem url="/" title="خانه" >
                 <template #icon>

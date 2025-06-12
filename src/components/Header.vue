@@ -25,7 +25,7 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
 <style scoped>
 .header {
     width: 100%;
-    height: 100.83740234375px;
+    height: 80px;
     justify-content: space-between;
     padding-top: 24px;
     padding-right: 48px;
@@ -37,7 +37,7 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
 }
 .leftSide {
     width: 500px;
-    height: 36;
+    height: 36px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,8 +57,8 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
     );
 }
 .items {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     padding: 5px;
 }
 input {

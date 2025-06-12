@@ -27,5 +27,6 @@ const props = defineProps({
     background: linear-gradient(
         201.1deg,rgba(2, 11, 31, 0.5) 0%,rgba(24, 32, 64, 0.5) 86.08%
     );
+    color: oklch(0.54 0.25 262.44);
 }
 </style>
