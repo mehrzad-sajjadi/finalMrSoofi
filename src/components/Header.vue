@@ -6,12 +6,15 @@
             class="w-[170px] h-[70px]"
         />
         <div class="leftSide">
-            <input
-                v-if="$router.path='users'"
-                type="text"
-                placeholder="جستجو..."
-                class="rounded-md text-white pr-4 w-[400px]"
-            />
+            <div>
+                <input
+                    v-if="route.path == '/users'"
+                    type="text"
+                    v-model="search"
+                    placeholder="جستجو..."
+                    class="rounded-md text-white pr-4 w-[400px] h-full"
+                />
+            </div>
             <div class="darkmode">
                 <SunIcon class="items rounded-md text-white" />
                 <MoonIcon class="items bg-[#0559FD] rounded-md text-white" />
@@ -21,7 +24,24 @@
     <hr class="" />
 </template>
 <script setup>
+import { ref,watch } from "vue";
 import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
+import { useRouter, useRoute } from "vue-router";
+
+const route = useRoute();
+const router = useRouter();
+const search = ref("");
+
+function getItem(search){
+    let filterd = users.value;
+    filterd = filterd.filter(user=>user.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    return filterd ;
+}
+watch(search,(newValue)=>{
+    search.value = getItem(search.value);
+    // newValue = newValue.toLocaleLowerCase();
+    // console.log(search.value);
+})
 </script>
 <style scoped>
 .header {
@@ -34,7 +54,6 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
     padding-left: 48px;
     display: flex;
     align-items: center;
-    background: #020b1f;
 }
 .leftSide {
     width: 500px;

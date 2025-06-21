@@ -32,6 +32,5 @@ const props = defineProps({
     header: Object,
     datas: Object
 });
-console.log(props.datas);
-console.log(props.header);
+
 </script>

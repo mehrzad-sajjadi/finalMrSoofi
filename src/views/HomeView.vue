@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[#020B1F] h-full">
-        <Layout />              
+    <div class=" h-full">
+        <Layout />
     </div>
 </template>
 <script setup>

@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[#020B1F] min-h-screen flex items-center justify-center">
-        <form 
+    <div class="min-h-screen flex items-center justify-center">
+        <form
             @submit.prevent="register(userName,password)"
             class="flex flex-col bg-[#020B1F] text-white w-full max-w-[540px] p-10 border border-gray-700 rounded-lg shadow-[24px_24px_96px_0px_#0C132C]"
         >

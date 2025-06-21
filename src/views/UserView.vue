@@ -1,9 +1,10 @@
 <template>
-    <div class="bg-[#020B1F] h-full">
+    <div class="h-full">
         <Layout>
             <div class="flex flex-col justify-center flex-wrap content-center">
                 <div class="flex justify-end mx-4 my-2">
-                    <button 
+                    <button
+                        @click="target = true"
                         type="button"
                         class="h-8 px-4 flex min-w-min items-center m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-700 hover:bg-blue-900 cursor-pointer rounded-lg focus:shadow-outline"
                     >
@@ -15,13 +16,87 @@
             </div>
         </Layout>              
     </div>
+    <teleport to="body">
+        <Modal
+            v-if="target"
+            ref="modalRef"
+            @closeModal="
+                () => {
+                    target = !target;
+                }
+            "
+        >
+            <template #header_title>
+                افزودن کاربر جدید
+            </template>
+            <template #content>
+                <div
+                    class="flex flex-col w-5/6 mx-auto my-16 border border-gray-500 rounded-lg"
+                >
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <div class="mb-5 py-2 px-2 w-full">
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 sm:gap-x-2"
+                                >
+                                    <div>
+                                        <label
+                                            class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                                        >
+                                            نام شرکت
+                                        </label>
+                                        <input
+                                            class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            autofocus                       
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                                        >
+                                            تلفن
+                                        </label>
+                                        <input
+                                            class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        />
+                                    </div>
+                                </div>
+        
+                                <label
+                                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                                >
+                                    آدرس
+                                </label>
+        
+                                <input
+                                    class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                />
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-between mb-4">
+                            <button
+                                as="button"
+                                type="button"
+                                class="h-9 px-4 m-2 text-lg duration-150 rounded focus:shadow-outline bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-500 dark:hover:text-white dark:hover:border-transparent"
+                            >
+                                افزودن کاربر
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+            </template>
+        </Modal>
+    </teleport>
 </template>
 <script setup>
-import {reactive } from "vue";
-
+import {reactive, ref } from "vue";
 import Layout from "@/components/Layout.vue";
 import Table from "@/components/Table.vue";
+import Modal from "@/components/Modal.vue";
 import {UserPlusIcon} from "@heroicons/vue/24/outline";
+
+const target = ref(false);
 const header =[
     "نام کاربری",
     "سن",
@@ -120,5 +195,4 @@ const users = reactive([
         email: 'reza@zanjansystem.ir'
     }
 ]);
-
 </script>

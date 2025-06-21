@@ -18,12 +18,12 @@ const routes = [
         name: "users",
         component : UserView
     }
-]
+];
 const router  = createRouter({
     history : createWebHistory(),
     routes
 })
-router.beforeEach((to,from,next)=>{ 
+router.beforeEach((to,from,next)=>{
     const name = localStorage.getItem("name");
     const password = localStorage.getItem("password");
     if( (!name || !password) && to.path!="/login" ){
@@ -31,5 +31,5 @@ router.beforeEach((to,from,next)=>{
     }else{
         next()
     }
-})
-export default router ; 
+});
+export default router ;
