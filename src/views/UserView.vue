@@ -273,7 +273,7 @@ const addUser=()=>{
         },
     );
     target.value = false ;
-    // alert("تبریک ! کاربر مرود نظر با موفقیت اضافه شد");
+    alert("تبریک ! کاربر مرود نظر با موفقیت اضافه شد");
 }
 </script>
 <style scoped>
