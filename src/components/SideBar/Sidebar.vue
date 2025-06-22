@@ -47,9 +47,8 @@
 <script setup>
 import { HomeIcon,UserGroupIcon,CubeIcon,CubeTransparentIcon,FilmIcon,RssIcon} from "@heroicons/vue/24/outline";
 import SidebarItem from "@/components/SideBar/SidebarItem.vue";
-
 </script>
-  
+
 <style scoped>
 .router:hover{
     background: linear-gradient(201.1deg, rgba(2, 11, 31, 0.5) 0%, rgba(24, 32, 64, 0.5) 86.08%);

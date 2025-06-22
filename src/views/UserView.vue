@@ -14,7 +14,7 @@
                 </div>
                 <Table :header="header" :datas="users" />
             </div>
-        </Layout>              
+        </Layout>
     </div>
     <teleport to="body">
         <Modal
@@ -31,60 +31,117 @@
             </template>
             <template #content>
                 <div
-                    class="flex flex-col w-5/6 mx-auto my-16 border border-gray-500 rounded-lg"
+                    class="flex flex-col w-full h-full"
                 >
-                    <div class="flex flex-col justify-between">
+                
+                    <form @submit.prevent="addUser" class="text-[#7E848E] h-full flex flex-col justify-between">                            
+                        <!-- اطلاعات کاربر -->
                         <div>
-                            <div class="mb-5 py-2 px-2 w-full">
-                                <div
-                                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 sm:gap-x-2"
-                                >
-                                    <div>
-                                        <label
-                                            class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                        >
-                                            نام شرکت
-                                        </label>
-                                        <input
-                                            class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            autofocus                       
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                        >
-                                            تلفن
-                                        </label>
-                                        <input
-                                            class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        />
-                                    </div>
+
+                            <div class="grid grid-cols-2 gap-3 my-5">
+                                <div class="w-full">
+                                    <label>نام کاربر</label>
+                                    <input 
+                                        v-model="newUser.name"
+                                        placeholder="نام کاربری را وارد کنید"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
                                 </div>
-        
-                                <label
-                                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                >
-                                    آدرس
-                                </label>
-        
-                                <input
-                                    class="block w-[100%] p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
+                                <div class="w-full">
+                                    <label>سن</label>
+                                    <input 
+                                        v-model="newUser.age"
+                                        placeholder="سن کاربر جدید را وارد کنید"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+
+                                <div class="w-full">
+                                    <label>ایمیل</label>
+                                    <input 
+                                        v-model="newUser.email"
+                                        placeholder="ایمیل کاربری را وارد کنید"
+                                        type="email" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+                                <div class="w-full">
+                                    <label>شماره تلفن</label>
+                                    <input 
+                                        v-model="newUser.phoneNumber"
+                                        placeholder="شماره کاربر جدید را وارد کنید"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
                             </div>
+                            <div class="grid grid-cols-4 gap-5">
+                                <div class="w-full">
+                                    <label>کشور</label>
+                                    <input 
+                                        placeholder="کشور"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+                                <div class="w-full">
+                                    <label>شهر</label>
+                                    <input 
+                                        v-model="newUser.address"
+                                        placeholder="شهر"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+                                <div class="w-full">
+                                    <label>خیابان</label>
+                                    <input 
+                                        placeholder="خیابان"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+                                <div class="w-full">
+                                    <label>کد پستی</label>
+                                    <input 
+                                        placeholder="کد"
+                                        type="text" 
+                                        class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                    >
+                                </div>
+                            </div>
+                            <div class="my-5">
+                                <label>شرکت</label>
+                                <input 
+                                    v-model="newUser.company"
+                                    placeholder="نام شرکت کاربر جدید را وارد کنید"
+                                    type="text" 
+                                    class="rounded-md py-2 px-1 border border-[#7E848E] mt-2 w-full"
+                                >
+                            </div>
+
                         </div>
-                        <div class="flex flex-row justify-between mb-4">
-                            <button
-                                as="button"
+                        <!-- دکمه ها -->
+                        <div class="grid grid-cols-2 gap-3 mt-12">
+                            <button 
+                                @click="target=false"
                                 type="button"
-                                class="h-9 px-4 m-2 text-lg duration-150 rounded focus:shadow-outline bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-500 dark:hover:text-white dark:hover:border-transparent"
+                                class="rounded-xl border text-[#0559FD] border-[#0559FD] text-xl py-1 cursor-pointer "
                             >
-                                افزودن کاربر
+                                لغو
+                            </button>
+                            <button 
+                                type="submit"
+                                class="bg-[#0559FD] text-white rounded-xl py-1 cursor-pointer "
+                            >
+                                تایید
                             </button>
                         </div>
-                    </div>
+                        
+                    </form>
                 </div>
-    
             </template>
         </Modal>
     </teleport>
@@ -94,6 +151,7 @@ import {reactive, ref } from "vue";
 import Layout from "@/components/Layout.vue";
 import Table from "@/components/Table.vue";
 import Modal from "@/components/Modal.vue";
+import Face from "@/components/Face.vue"
 import {UserPlusIcon} from "@heroicons/vue/24/outline";
 
 const target = ref(false);
@@ -195,4 +253,29 @@ const users = reactive([
         email: 'reza@zanjansystem.ir'
     }
 ]);
+const newUser = reactive({
+    name : "",
+    age : "", 
+    phoneNumber : "",
+    address : "",
+    company : "",
+    email : ""
+});
+const addUser=()=>{
+    users.push(
+        {
+            name: newUser.name ,
+            age: newUser.age ,
+            phoneNumber: newUser.phoneNumber ,
+            address: newUser.address ,
+            company: newUser.company ,
+            email: newUser.email ,
+        },
+    );
+    target.value = false ;
+    // alert("تبریک ! کاربر مرود نظر با موفقیت اضافه شد");
+}
 </script>
+<style scoped>
+
+</style>

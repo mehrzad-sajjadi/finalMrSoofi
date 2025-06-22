@@ -4,7 +4,7 @@
         <hr class="h-[2px] bg-gray-600" />
         <div class="flex flex-1 flex-row h-full">
             <Sidebar class="w-64" />
-            <div class=" w-full">
+            <div class="w-full">
                 <slot></slot>
             </div>
         </div>
@@ -13,7 +13,6 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import Sidebar from "@/components/SideBar/Sidebar.vue";
-
+import Notification from "@/components/Notification.vue";
 
 </script>
-
